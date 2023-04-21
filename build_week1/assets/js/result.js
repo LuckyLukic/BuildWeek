@@ -6,7 +6,7 @@ let quizLength = window.sessionStorage.getItem('totQst');
 // risposte sbagliate 
 let scoreWrong = (quizLength - scoreRight);
 // percentuale risposte giuste
-let percentRight = ((scoreRight / quizLength) * 100.).toFixed(1);
+let percentRight = ((scoreRight / quizLength) * 100).toFixed(1);
 // percentuale risposte sbagliate
 let percentWrong = (100 - percentRight).toFixed(1);
 // esito del test
@@ -21,8 +21,7 @@ function stato() {
 let status = stato();
 
 // POPOLIAMO IL DIV RISPOSTE CORRETTE
-const correct = document.getElementsByClassName('correct')[0];
-const wrong = document.getElementsByClassName('wrong')[0];
+const correct = document.querySelector('.correct');
 const correctPercentage = document.createElement('b');
 correctPercentage.innerHTML = `${percentRight}%`;
 correct.appendChild(correctPercentage);
@@ -30,7 +29,8 @@ const correctAnswers = document.createElement('p');
 correctAnswers.innerHTML = `${scoreRight}/${quizLength} questions`;
 correct.appendChild(correctAnswers);
 
-// POPOLIAMO IL DIV RISPOSTE SBAGLIATE 
+// POPOLIAMO IL DIV RISPOSTE SBAGLIATE
+const wrong = document.querySelector('.wrong');
 const wrongPercentage = document.createElement('b');
 wrongPercentage.innerHTML = `${percentWrong}%`;
 wrong.appendChild(wrongPercentage);
@@ -39,7 +39,7 @@ wrongAnswers.innerHTML = `${scoreWrong}/${quizLength} questions`;
 wrong.appendChild(wrongAnswers);
 
 // POPOLIAMO IL DIV ESITO DEL TEST
-const round = document.getElementsByClassName('round')[0];
+const round = document.querySelector('.round');
 round.innerHTML = status;
 
 // DIAMO LA PERCENTUALE ALLA TORTA
